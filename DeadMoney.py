@@ -22,30 +22,25 @@ async def on_message(message):
         msg = 'Hello {0.author.mention}'.format(message)
         await message.channel.send("hi "+mention)
     elif message.content.startswith('!help'):
-        await message.channel.send("OK "+mention+"... je te montre.\n!hello : none \n!show : la bourse\n!dick : savoir si t'es une bite\n!rusian : un jeu ou tu ne perd qu'une fois...");
+        await message.channel.send("OK "+mention+"... je te montre.\n!hello : none \n!show : la bourse\n!rusian : un jeu ou tu ne perd qu'une fois...");
     elif message.content.startswith('!rules'):
         await message.channel.send("---_Rusian_---\nUn Colt 1860 Army, une balle, la partie est finis lorsqu'elle est logé dans un crane.\n---_Black_---\nL'objectif c'est 21, trop haut tu perd, trop bas le bot l'emporte.")
     elif message.content.startswith('!show'):
         await message.channel.send("I can't show you  "+mention)
-##        await message.channel.send("I whill show you  "+mention)
-##        url = 'https://www.boursorama.com/bourse'
-##        req = urllib.request.Request(url)
-##        resp = urllib.request.urlopen(req)
-##        respData = resp.read()
-##        pourcents = re.findall(r'(.....)%</span>',str(respData))
-##        nom0 = re.findall(r'c-list-trading__item c-list-trading__item--name c-homepage-tradingboard__list-item / u-ellipsis">(.*?)</div',str(respData))
-##        nom1 = re.findall(r'([A-Z0-9])',str(nom0))
-##        for entrepr, pour in zip(nom0, pourcents):
-##            print(pour,entrepr [34:-30])
-##            kak40 = pour,entrepr [34:-30]
-##            await message.channel.send(kak40)
+        await message.channel.send("I whill show you  "+mention)
+        url = 'https://www.boursorama.com/bourse'
+        req = urllib.request.Request(url)
+        resp = urllib.request.urlopen(req)
+        respData = resp.read()
+        pourcents = re.findall(r'(.....)%</span>',str(respData))
+        nom0 = re.findall(r'c-list-trading__item c-list-trading__item--name c-homepage-tradingboard__list-item / u-ellipsis">(.*?)</div',str(respData))
+        nom1 = re.findall(r'([A-Z0-9])',str(nom0))
+        for entrepr, pour in zip(nom0, pourcents):
+            print(pour,entrepr [34:-30])
+            kak40 = pour,entrepr [34:-30]
+            await message.channel.send(kak40)
     elif message.content.startswith('!news'):
         await message.channel.send("Des news pour "+mention+" !")
-    elif message.content.startswith('!dick'):
-        n = randint(0, 40)
-        j= str(n-10)
-        await message.channel.send("tu as "+j+" cm "+mention);
-        
     elif message.content.startswith('!black'):                                                                  #   #   #   # Black #  #  #  #
         i=0
         await message.channel.send("Je te passe deux cartes "+mention); ### deux premières cartes
@@ -104,7 +99,7 @@ async def on_message(message):
                 loop.create_task(askcard(message,mention,somme,continuer))
                 somme = 30
             else:
-                await message.channel.send("Bha ... je pige pas dsl t'as perdu ^^'");
+                await message.channel.send("Bha ... t'as perdu ^^'");
                 somme = 30
 
 
@@ -135,12 +130,12 @@ async def on_message(message):
             fs.close()
 
             await message.channel.send(texte);
-            print("éfface le fichié")
+            print("effacé le fichier")
             fichier = open("rusian.txt", "w")
             fichier.write("")                   # éfface
             fichier.close()
             barille = randint(1, 5)
-            await message.channel.send("la balle est prète\n!shoot pour tiré\n!roll pour tourné puis tiré");
+            await message.channel.send("la balle est prète\n!shoot pour tirer\n!roll pour tourné puis tirer");
             print(barille)
             tim = 10
             while barille != 0 and tim != 0:
@@ -148,9 +143,9 @@ async def on_message(message):
                 tim = tim - 1
                 print(tim)
                 if tim == 0:
-                    await message.channel.send("Alors ... tu à peur de mourir? \nRentre chez toi ...");
+                    await message.channel.send("Tu as pris trop de temps.");
             
-    print("feef")
+
 ###################################################################################################################################################
 ################################################################------FONCTIONS------##############################################################
 
