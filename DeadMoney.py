@@ -40,10 +40,10 @@ async def on_message(message):
             kak40 = pour,entrepr [34:-30]
             await message.channel.send(kak40)
     elif message.content.startswith('!news'):
-        await message.channel.send("Des news pour "+mention+" !")
+        await message.channel.send("some news for "+mention+" !")
     elif message.content.startswith('!black'):                                                                  #   #   #   # Black #  #  #  #
         i=0
-        await message.channel.send("Je te passe deux cartes "+mention); ### deux premières cartes
+        await message.channel.send("take two cards "+mention); ### deux premières cartes
         while i != 2:
             carte1 = randint(1, 10)
             couleur1 = randint(1, 4)
@@ -63,7 +63,7 @@ async def on_message(message):
             elif i == 1:
                 somme = carte1 + carte2
             i = i+1
-        await message.channel.send("Un totale de "+str(somme)+" pour "+mention+"\n!T Pour tirer\n!D pour doubler\n!R Pour rester");
+        await message.channel.send("Un totale de "+str(somme)+" pour "+mention+"\n!T To shoot\n!D To double\n!R check");
         def pred(m):
             return m.author == message.author and m.channel == message.channel
         #if somme > 21:
@@ -73,7 +73,7 @@ async def on_message(message):
         try:
             msg = await client.wait_for('message', check=pred, timeout=30.0)
         except:
-            await message.channel.send('Trop lent!\nRentre chez toi!')
+            await message.channel.send('Too slow!')
             somme = 30
         else:
             choix = ('{0.content}'.format(msg))
@@ -82,24 +82,24 @@ async def on_message(message):
                 continuer = 1
                 loop.create_task(askcard(message,mention,somme,continuer))
             elif choix == "!D":
-                await message.channel.send("Prêt a perdre le double ?");
+                await message.channel.send("ready to loose the double ?");
                 continuer = 1
                 loop.create_task(askcard(message,mention,somme,continuer))
             elif choix == "!R":
-                await message.channel.send("Ok voyon voir ton score\nUn totale de "+str(somme));
+                await message.channel.send("Let's see your score  "+str(somme));
                 #await message.channel.send("Un totale de "+str(somme));
                 continuer = 0
                 n = randint(15, 25)
                 if n >21:
-                    await message.channel.send("tu gagne! le bot a eu "+str(n)+".");
+                    await message.channel.send("you win! the bot got "+str(n)+".");
                 elif n > somme:
-                    await message.channel.send("Perdu, le bot a eu "+str(n)+".");
+                    await message.channel.send("you loose, the bot got "+str(n)+".");
                 else:
-                    await message.channel.send("tu gagne! le bot a eu "+str(n)+".");
+                    await message.channel.send("you win! the bot got "+str(n)+".");
                 loop.create_task(askcard(message,mention,somme,continuer))
                 somme = 30
             else:
-                await message.channel.send("Bha ... t'as perdu ^^'");
+                await message.channel.send("you loose");
                 somme = 30
 
 
@@ -112,7 +112,7 @@ async def on_message(message):
         await message.channel.send("the seconde player should type !rjoin");
     elif message.content.startswith('!rjoin'):
         second = mention
-        fs = open("rusian.txt", 'r')            # ouvre pour vérifie le longueur
+        fs = open("rusian.txt", 'r')            # open an check the lenght
         texte = fs.read()
         longueur=len(texte)
         fs.close()
@@ -124,7 +124,7 @@ async def on_message(message):
             fichier.write("S "+second)
             fichier.close()
 
-            fs = open("rusian.txt", 'r')            # ouvre pour vérifie le longueur
+            fs = open("rusian.txt", 'r')            
             texte = fs.read()
 
             fs.close()
@@ -197,9 +197,9 @@ async def askcard(message,mention,somme,continuer):
                     continuer = 0
                     deja = 1000
                 else:
-                    await message.channel.send("Bha ... je pige pas dsl t'as perdu ^^'");
+                    await message.channel.send("you loose");
         else:
-            await message.channel.send("perdu!");
+            await message.channel.send("you loose");
 
 ###################################################################################################################################################
 
